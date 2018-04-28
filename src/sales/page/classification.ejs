@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--inline[../../common/page/head.ejs]-->
+    <!-- 
+        @require "../../common/static/lib/datepicker.js"
+        @require "../../common/static/css/datepicker.css"
+        @require "../../common/static/lib/dataTablePlugin.js"
+        @require "../static/js/classification.js"
+    -->
+    <style>
+        
+        #all{
+            width:80%;
+            margin:0 auto;
+            display:inline-block;
+        }
+        #right{
+            width:100%;
+            display:inline-block;
+            margin-top:30px;
+        }
+        nav{
+            width:100%;
+            height: 50px;
+            background-color:#00AAFF;
+        }
+        nav>span{
+            color: white;
+            line-height: 50px;
+            font-size: 18px;
+        }
+        #tab{
+            margin-top:20px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <span>一通数据抓取统计</span>
+    </nav>
+        <!--inline[../../common/page/header.ejs]-->
+    
+    <div id="all">
+        
+        <div id="right">
+            <form class="form-horizontal row">
+                <div class="col-xs-offset-1 header-title" style="font-size: 16px;margin-bottom:20px">药品分类表:</div>
+                
+            </form>
+            <div id="tab">
+                <table id="sum" class="table table-bordered" style="width:100%">
+                    <thead>
+                        <tr>
+                            <td>药品分类</td>  
+                            <td>门店</td>
+                            <td>销售额</td>
+                            <td>成本</td>
+                            <td>毛利</td>
+                            <td>毛利率</td>
+                            <td>药品详情</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    
+                    </tbody>
+                </table>
+            </div>    
+        </div>
+
+    </div>
+    <script>
+        var store = <%- JSON.stringify(locals.store) %>
+        var day1 = <%- JSON.stringify(locals.day1) %>
+        var day2 = <%- JSON.stringify(locals.day2) %>
+    </script>   
+
+     <!--inline[../../common/page/foot.ejs]-->
+</body>
+</html>

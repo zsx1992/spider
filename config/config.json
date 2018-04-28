@@ -1,0 +1,154 @@
+/* 该文件用于生产环境，不要轻易修改该文件，请修改development.json，修改相应的端口或配置*/
+{
+    "rbac": "path:./rbac",
+    "log4jsConfig": "path:./config/log4js.json",
+
+    "express": {
+        "view engine": "ejs",
+        "view cache": true,
+        "views": "path:./site/views"
+    },
+
+    "view engines": {
+        "ejs": {
+            "module": "ejs",
+            "renderer": "renderFile"
+        }
+    },
+    "mongoConfig": {
+        "host": "mongoDb",
+        "database": "mpay" //修改
+    },
+
+    //统计活动注册人数时用到
+    "countConfig": {
+        "host": "mongoDb",
+        "database": "rbac" //修改
+    },
+
+    "mysqlConfig" : {
+        "connectionLimit" : 30,
+        "host"     : "120.76.27.182",
+        "user"     : "root",
+        "password" : "mysqlpwdepb",
+        "database" : "yitong",
+        "port": 3306
+    },
+
+    "qiniuConfig": {
+        // "ACCESS_KEY": "H51ZLbLGMEBOL0Ut56CI7ZOPsOiE3lkWdriXawr6",
+        // "SECRET_KEY": "Sf-Y_OzfCKtQCUgYZQ7AKTB0x8YsCkqb5ZYSXHIE",
+        // "bucketname": "analysis"
+        "ACCESS_KEY": "H51ZLbLGMEBOL0Ut56CI7ZOPsOiE3lkWdriXawr6",
+        "SECRET_KEY": "Sf-Y_OzfCKtQCUgYZQ7AKTB0x8YsCkqb5ZYSXHIE",
+        "bucketname": "analysis"
+    },
+
+    "middleware": {
+        "static": {
+            "module": {
+                "arguments": ["path:./public"]
+            }
+        },
+
+        "urlencoded": {
+            "enabled": true,
+            "priority": 70,
+            "module": {
+                "name": "body-parser",
+                "method": "urlencoded",
+                "arguments": [{ "extended": true,
+                                "limit":"400kb" 
+                            }]
+            }
+        },
+
+        "favicon": {
+            "module": {
+                "arguments": ["path:./public/favicon.ico"]
+            }
+        },
+
+        "logger": {
+            "enabled": false
+        },
+
+        "cookieParser": {
+            "module": {
+                "arguments": ["6de5191ab3c401bcb266dff913"]
+            }
+        },
+
+        "session": {
+            "enabled": true,
+            "priority": 100,
+            "module": {
+                "name": "kraken-middleware/lib/redis-session",
+                "arguments": [{
+                    "secret": "6de5191ab3c401bcb266dff913",
+                    "cookie": {
+                        "path": "/",
+                        "httpOnly": true,
+                        "maxAge": 7200000
+                    },
+                    "resave": true,
+                    "saveUninitialized": true
+                }, {
+                    "host": "redisDb",
+                    "port": 6379
+                }]
+            }
+        },
+
+        "appsec": {
+            "enabled": true,
+            "priority": 110,
+            "module": {
+                "name": "lusca",
+                "arguments": [{
+                    "csrf": true,
+                    "xframe": "SAMEORIGIN",
+                    "p3p": false,
+                    "csp": false
+                }]
+            }
+        },
+
+        "switchOption": {
+            "enabled": true,
+            "priority": 119,
+            "module": {
+                "name": "kraken-middleware/lib/switch",
+                "arguments": [{}]
+            }
+        },
+
+        "router": {
+            "enabled": true,
+            "priority": 120,
+            "module": {
+                "arguments": [{
+                    "directory": "path:./controllers"
+                }]
+            }
+        },
+
+        "fileNotFound": {
+            "enabled": true,
+            "priority": 130,
+            "module": {
+                "name": "kraken-js/middleware/404",
+                "arguments": ["error/404"]
+            }
+        },
+
+        "serverError": {
+            "enabled": false,
+            "priority": 140,
+            "module": {
+                "name": "kraken-js/middleware/500",
+                "arguments": ["error/500"]
+            }
+        }
+    }
+}

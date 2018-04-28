@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--inline[../../common/page/head.ejs]-->
+    <!-- 
+        @require "../../common/static/lib/datepicker.js"
+        @require "../../common/static/css/datepicker.css"
+        @require "../../common/static/lib/dataTablePlugin.js"
+        @require "../static/js/summary.js"
+    -->
+    <style>
+        
+        #all{
+            width:80%;
+            margin:0 auto;
+            display:inline-block;
+        }
+        #right{
+            width:100%;
+            display:inline-block;
+        }
+        nav{
+            width:100%;
+            height: 50px;
+            background-color:#00AAFF;
+        }
+        nav>span{
+            color: white;
+            line-height: 50px;
+            font-size: 18px;
+        }
+        #tab{
+            margin-top:20px;
+        }
+        .range{
+            width:100px;
+            height:40px;
+            border:1px solid #cccccc;
+            border-radius:5px;
+            float:left;
+            background:white;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <span>一通数据抓取统计</span>
+    </nav>
+        <!--inline[../../common/page/header.ejs]-->
+    
+    <div id="all">
+        
+        <div id="right">
+            <form class="form-horizontal row">
+                <div class="col-xs-offset-1 header-title" style="font-size: 16px;margin-bottom:20px">销售毛利总表:</div>
+                <label for="store" class="col-xs-offset-1 control-label col-xs-1">门店名称:</label>
+                <div class=" col-xs-2">
+                    <input type="text" class="form-control" id="store" placeholder="门店名称">
+                </div>
+
+                <span class="col-xs-1 control-label">列表排序:</span>
+                <div class="col-xs-1">
+                    <select class="form-control" id="select">
+                        <option>请选择</option>
+                        <option>按销售额</option>
+                        <option>按毛利率</option>                       
+                    </select>
+                </div>
+                <input id="hiddenText" type="text" style="display:none" />  
+                <button type="button" class="btn btn-primary col-xs-1" id="search">搜索</button>
+            </form>
+              
+            <div class="" role="group" aria-label="..." style="margin-top:20px;overflow:hidden">
+                <button type="button" class="fifteen range ">最近15天</button>
+                <button type="button" class="range ">最近30天</button>
+                <button type="button" class="range ">最近半年</button>
+            </div>
+
+            <div id="tab">
+                <table id="sum" class="table table-bordered" style="width:100%">
+                    <thead>
+                        <tr>
+                            <td>排名</td>
+                            <td>门店名称</td>
+                            <td>销售额(元)</td>
+                            <td>进货成本(元)</td>
+                            <td>毛利</td>
+                            <td>毛利率</td>
+                            <td>变化幅度</td>
+                            <td>操作</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    
+                    </tbody>
+                </table>
+            </div>    
+        </div>
+
+    </div>
+        
+
+     <!--inline[../../common/page/foot.ejs]-->
+</body>
+</html>

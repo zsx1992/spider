@@ -1,0 +1,23 @@
+
+section{
+    vertical-align: top;
+    width:10%;
+    display: inline-block;
+    margin-top:100px;
+    
+}
+section>div{
+    width:140px;
+    height:40px;
+    /* margin-left: 50px; */
+    border:1px solid #DDDDDD;
+    text-align: center;
+    line-height: 40px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px ;
+}
+.orange{
+    background-color:#00AAFF !important;
+    color:white; 
+}

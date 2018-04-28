@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--inline[../../common/page/head.ejs]-->
+    <!-- 
+        @require "../../common/static/lib/moment.js"
+        @require "../../common/static/lib/highcharts.js"
+        @require "../static/js/chart.js"
+    -->
+    <style>
+       
+        #all{
+            width:80%;
+            margin:0 auto;
+            display:inline-block;
+        }
+        #right{
+            width:100%;
+            display:inline-block;
+        }
+        nav{
+            width:100%;
+            height: 50px;
+            background-color:#00AAFF;
+        }
+        nav>span{
+            color: white;
+            line-height: 50px;
+            font-size: 18px;
+        }
+        #tab{
+            margin-top:20px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <span>一通数据抓取统计</span>
+    </nav>
+        <!--inline[../../common/page/header.ejs]-->
+    <div id="all">
+        <div id="right">
+            <div id="tab">
+                <div class="col-xs-offset-1 header-title" style="font-size: 16px;margin-bottom:20px">门店趋势图:</div>
+                <div style="width:100%;overflow:hidden ; border:1px solid #00AAFF">
+                    <div  id="sales" style="width:50%;display:inline-block;float:left"></div>
+                    <div  id="profit" style="width:50%;display:inline-block;float:left"></div>
+                </div>
+                <div style="margin-top:20px;width:100%;overflow:hidden;border:1px solid #00AAFF">
+                    <div  id='stock' style="width:50%;display:inline-block;float:left"></div>
+                    <div id="returnin" style="width:50%;display:inline-block;float:left"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+     <!--inline[../../common/page/foot.ejs]-->
+    <script src = '../../common/static/lib/highcharts.js'></script>    
+    <script>
+        var data = <%- JSON.stringify(locals.data) %>
+        var store = <%- JSON.stringify(locals.store)%>
+        console.log('data',data,store)
+    </script> 
+</body>
+</html>
